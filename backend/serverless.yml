@@ -3,18 +3,19 @@ service: alerta-utec
 
 provider:
   name: aws
-  runtime: python3.10
+  runtime: python3.9
   memorySize: 256
   timeout: 20
   region: us-east-1
-  role: 197052065931
+  iam:
+    role: arn:aws:iam::197052065931:role/LabRole
 
 functions:
   crear_incidente:
     handler: app.crear_incidente
     events:
       - http:
-          path: /incidentes
+          path: incidentes
           method: post
           cors: true
 
@@ -22,7 +23,7 @@ functions:
     handler: app.listar_incidentes
     events:
       - http:
-          path: /incidentes
+          path: incidentes
           method: get
           cors: true
 
@@ -30,7 +31,7 @@ functions:
     handler: app.obtener_incidente
     events:
       - http:
-          path: /incidentes/{id}
+          path: incidentes/{id}
           method: get
           cors: true
 
@@ -38,7 +39,7 @@ functions:
     handler: app.actualizar_incidente
     events:
       - http:
-          path: /incidentes/{id}
+          path: incidentes/{id}
           method: put
           cors: true
 
