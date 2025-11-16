@@ -6,8 +6,7 @@ provider:
   runtime: python3.9
   memorySize: 256
   timeout: 20
-  iam:
-    role: arn:aws:iam::447891120606:role/LabRole
+  role: arn:aws:iam::447891120606:role/LabRole
 
 functions:
   crear_incidente:
